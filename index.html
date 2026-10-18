@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>AeroNav</title>
+  <meta name="description" content="AeroNav – Flugvorbereitung für VFR-Piloten im Verein. Zugang nur mit Code. Keine zugelassene Navigationsquelle.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#101317">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="AeroNav">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="lader.css">
+  <script src="kern.js"></script>
+  <script src="lader.js" defer></script>
+</head>
+<body>
+  <main class="lader">
+    <header class="marke">
+      <img src="icons/icon.svg" alt="" width="64" height="64">
+      <div>
+        <h1>AeroNav</h1>
+        <p>Flugvorbereitung für VFR-Piloten im Verein</p>
+      </div>
+    </header>
+
+    <form id="anmelden" class="karte" autocomplete="off" action="#" onsubmit="return false">
+      <label for="code">Zugangscode</label>
+      <div class="zeile">
+        <input id="code" name="code" type="password" required autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="go" aria-describedby="status">
+        <button type="submit">Öffnen</button>
+      </div>
+      <p id="status" class="status" role="status" aria-live="polite">AeroNav ist nur mit Zugangscode nutzbar. Danach bleibt die App auf diesem Gerät freigeschaltet und funktioniert auch offline.</p>
+    </form>
+
+    <section id="verwalten" class="karte" hidden>
+      <h2>Zugang auf diesem Gerät</h2>
+      <p id="verwalten-stand"></p>
+      <div class="zeile">
+        <a class="knopf" href="./">Zur App</a>
+        <button id="entfernen" type="button" class="leise">Zugang entfernen</button>
+      </div>
+      <p class="klein">„Zugang entfernen“ löscht den Schlüssel und die entschlüsselte App auf diesem Gerät. Deine Routen und Notizen bleiben im Browser.</p>
+    </section>
+
+    <p class="warnung"><strong>Planungshilfe – keine zugelassene Navigationsquelle.</strong> Verbindlich sind AIP, ICAO-Karte, NOTAM, amtliches Flugwetter (DWD) und das Flughandbuch. Die Verantwortung für den Flug liegt beim verantwortlichen Piloten.</p>
+
+    <details id="impressum-teil">
+      <summary>Impressum</summary>
+      <div id="impressum">Impressum wird geladen …</div>
+    </details>
+
+    <details>
+      <summary>Datenschutz</summary>
+      <p>Diese Seite liegt bei GitHub Pages (GitHub, Inc.). Beim Aufruf verarbeitet GitHub technisch notwendige Daten wie deine IP-Adresse, um die Seite auszuliefern.</p>
+      <p>AeroNav hat keine Benutzerkonten, kein Tracking und keine Cookies. Der Zugangscode wird nur in deinem Browser zum Entschlüsseln benutzt und nicht übertragen. Auf dem Gerät gespeichert werden der daraus abgeleitete Schlüssel und die entschlüsselte App, bis du den Zugang entfernst.</p>
+      <p>In der App selbst stehen unter „Mehr“ die Verbindungen, die dein Browser für Wetter, Höhenwind, Geländehöhe und die OpenStreetMap-Karte aufbaut.</p>
+    </details>
+  </main>
+</body>
+</html>

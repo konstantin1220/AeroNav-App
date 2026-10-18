@@ -1,0 +1,40 @@
+# Holt alle 30 Minuten METAR und TAF und legt sie als wetter.json auf den Zweig „wetter“.
+# Die App lädt die Datei von raw.githubusercontent.com (dort ist der Abruf aus dem Browser erlaubt).
+# Der Zweig enthält immer nur einen einzigen Stand (wird jedes Mal ersetzt).
+name: Wetter holen
+
+on:
+  schedule:
+    - cron: '7,37 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: wetter
+  cancel-in-progress: true
+
+jobs:
+  wetter:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          sparse-checkout: tools
+      - name: METAR und TAF holen
+        run: |
+          mkdir -p "$RUNNER_TEMP/wetter"
+          node tools/wetter-holen.mjs "$RUNNER_TEMP/wetter/wetter.json"
+      - name: Auf Zweig „wetter“ ablegen
+        env:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd "$RUNNER_TEMP/wetter"
+          git init -q -b wetter
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add wetter.json
+          git commit -q -m "Wetter $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push -q -f "https://x-access-token:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git" wetter

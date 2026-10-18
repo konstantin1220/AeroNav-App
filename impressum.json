@@ -1,0 +1,10 @@
+{
+  "_hinweis": "Anbieterkennzeichnung nach § 18 Abs. 1 Medienstaatsvertrag: Name und ladungsfähige Anschrift (kein Postfach). Solange 'name' leer ist, zeigt die App kein Impressum an. Anschrift als Liste von Zeilen, E-Mail verschleiert (z. B. \"name (at) domain.de\"). Keine persönlichen Daten ohne ausdrückliche Freigabe eintragen. Übernommen aus AeroTrainer mit Freigabe vom 18.10.2026.",
+  "name": "Konstantin Scheffler",
+  "anschrift": [
+    "Im Sanktwendel 33",
+    "64342 Seeheim-Jugenheim"
+  ],
+  "vertreten": null,
+  "email": "konstantin.scheffler (at) icloud.com"
+}
